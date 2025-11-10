@@ -6,7 +6,7 @@ Projekt koristi sljedeću git strukturu:
 
 ```
 master (main branch)
-└── feature/esm-migration (ESM migration branch)
+└── crm-demo (development branch)
 ```
 
 ---
@@ -21,10 +21,11 @@ master (main branch)
   - Bez direktnih pusheva
   - Koristi pull requests
 
-### `feature/esm-migration` (Feature Branch)
-- **Opis:** ESM migracija s CommonJS na ES Modules
+### `crm-demo` (Development Branch)
+- **Opis:** Aktivni razvoj CRM aplikacije
 - **Status:** Active development
 - **Sadržaj:**
+  - ✅ ESM migracija (CommonJS → ES Modules)
   - ✅ Konvertovane konfiguracije (postcss, tailwind, vite)
   - ✅ ESM dokumentacija
   - ✅ Poboljšani `.gitignore`
@@ -41,10 +42,10 @@ git clone <repository-url>
 cd crm-jwt-demo
 ```
 
-### 2. Prebacivanje na Feature Branch
+### 2. Prebacivanje na Development Branch
 
 ```bash
-git checkout feature/esm-migration
+git checkout crm-demo
 ```
 
 ### 3. Rad na Kodu
@@ -65,12 +66,12 @@ git commit -m "Opis promjene"
 ### 5. Push na Remote
 
 ```bash
-git push origin feature/esm-migration
+git push origin crm-demo
 ```
 
 ### 6. Pull Request (na GitHubu)
 
-- Otvorite PR s `feature/esm-migration` → `master`
+- Otvorite PR s `crm-demo` → `master`
 - Dodajte opis promjena
 - Čekajte review
 - Merge nakon approvala
@@ -159,12 +160,12 @@ git pull origin master
 ./start.sh
 ```
 
-### Iz Feature Brancha (Development)
+### Iz Development Brancha (Development)
 
 ```bash
 # Development deployment
-git checkout feature/esm-migration
-git pull origin feature/esm-migration
+git checkout crm-demo
+git pull origin crm-demo
 ./start.sh
 ```
 
@@ -225,10 +226,10 @@ git checkout master
 git pull origin master
 ```
 
-### Ažuriranje Feature Brancha
+### Ažuriranje Development Brancha
 
 ```bash
-git checkout feature/esm-migration
+git checkout crm-demo
 git pull origin master
 git merge master
 ```
@@ -236,13 +237,13 @@ git merge master
 ### Brisanje Lokalnog Brancha
 
 ```bash
-git branch -d feature/esm-migration
+git branch -d crm-demo
 ```
 
 ### Brisanje Remote Brancha
 
 ```bash
-git push origin --delete feature/esm-migration
+git push origin --delete crm-demo
 ```
 
 ### Vraćanje Promjena

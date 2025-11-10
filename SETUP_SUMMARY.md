@@ -79,14 +79,14 @@ Ažuriran s:
 
 ```
 master (main branch)
-└── feature/esm-migration (active development)
+└── crm-demo (active development)
 ```
 
 ### Commits
 
 ```
 b47a3e5 (master) – Initial commit: ESM migration complete
-bd9961a (feature/esm-migration) – docs(git): add comprehensive git workflow documentation
+bd9961a (crm-demo) – docs(git): add comprehensive git workflow documentation
 ```
 
 ---
@@ -169,10 +169,10 @@ git clone <repository-url>
 cd crm-jwt-demo
 ```
 
-### 2. Prebacivanje na Feature Branch
+### 2. Prebacivanje na Development Branch
 
 ```bash
-git checkout feature/esm-migration
+git checkout crm-demo
 ```
 
 ### 3. Instalacija Zavisnosti
@@ -260,7 +260,7 @@ Dostupna je sljedeća dokumentacija:
 
 ### Za Razvoj
 
-1. Radite na `feature/esm-migration` branchu
+1. Radite na `crm-demo` branchu
 2. Commitajte s jasnim porukama
 3. Testirajte lokalno
 4. Pushajte na remote
@@ -268,7 +268,7 @@ Dostupna je sljedeća dokumentacija:
 
 ### Za Produkciju
 
-1. Mergejte `feature/esm-migration` u `master`
+1. Mergejte `crm-demo` u `master`
 2. Testirajte na production okruženju
 3. Deployajte s `master` brancha
 
