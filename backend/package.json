@@ -1,0 +1,18 @@
+{
+  "name": "crm-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/server.js",
+    "db:setup": "psql -h localhost -p 5433 -U crm_user -d crm_demo -f database/schema.sql",
+    "db:reset": "docker-compose down -v && docker-compose up -d && sleep 10 && npm run db:setup"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "pg": "^8.11.3",
+    "dotenv": "^16.3.1",
+    "jsonwebtoken": "^9.0.2",
+    "bcrypt": "^5.1.1"
+  }
+}

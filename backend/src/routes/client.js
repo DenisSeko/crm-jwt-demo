@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { auth } from '../middleware/auth.js';
+import { get, create, update, remove } from '../controllers/client.js';
+const r = Router();
+r.use(auth);
+r.get('/', get);
+r.post('/', create);
+r.put('/:id', update);
+r.delete('/:id', remove);
+export default r;
