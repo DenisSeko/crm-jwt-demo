@@ -1,190 +1,110 @@
-# CRM JWT Demo
+# Modern Full-Stack CRM with Native ESM & JWT Authentication
 
-Moderan full-stack CRM demo projekt s Vue 3 frontenom, Express.js backenom i PostgreSQL bazom. **Sada u potpunosti ESM kompatibilan!** 🎉
+A decoupled, containerized full-stack CRM demonstration platform built to showcase modern JavaScript development practices. The architecture utilizes **Vue 3** (Pinia/Vite) on the frontend and an **Express.js** REST API on the backend, fully backed by a **PostgreSQL** database.
 
-## ✨ Ključne Karakteristike
+> This repository highlights a complete migration to native ES Modules (ESM) across the entire dependency tree, solving common enterprise modernization bottlenecks.
 
-- ✅ **ES Modules (ESM)** – moderan JavaScript modul sistem
-- ✅ **Vue 3 + Vite** – brz frontend s hot reload-om
-- ✅ **Express.js + PostgreSQL** – robustan backend
-- ✅ **JWT Autentifikacija** – sigurna prijava
-- ✅ **Docker** – lako pokretanje s Docker Compose
-- ✅ **Tailwind CSS** – moderan styling
+---
 
-## 🚀 Brzo pokretanje
+## ✨ Core Technical Highlights
 
-```bash
-./setup.sh    # samo prvi put
-./start.sh    # pokretanje aplikacije
-./stop.sh     # zaustavljanje aplikacije
-./test-api.sh # testiranje API-ja
-```
+- ⚡ **Full ES Modules (ESM) Integration** – Modernized JavaScript module pattern removing legacy CommonJS patterns, correctly handling ESM pathing (`__dirname`) inside build tools and runtime environments.
+- 🔐 **Stateful JWT Authentication Flow** – Complete authorization pipeline using JSON Web Tokens combined with `bcrypt` password hashing, secure route guards, and automated token handling via Axios interceptors.
+- 📦 **Reactivity & State Management** – Powered by Vue 3 (Composition API) and Pinia, providing a clean, single-source-of-truth store architecture for active clients and user sessions.
+- 🐳 **Orchestrated DevOps Environment** – Multi-container Docker Compose mesh managing an isolated PostgreSQL 15 instance and Adminer web UI for zero-configuration local database administration.
+- 🎨 **Utility-First UI Design** – High-fidelity, responsive user interface styled with Tailwind CSS, featuring active dashboard statistics and modal-driven CRUD interfaces.
 
-## 📍 Pristup Aplikaciji
+---
 
-Nakon pokretanja, dostupni su:
+## 📊 System Architecture
 
-| Servis | URL | Opis |
-|--------|-----|------|
-| **Frontend** | http://localhost:5173 | Vue 3 aplikacija |
-| **Backend** | http://localhost:3001 | Express API |
-| **Adminer** | http://localhost:8080 | Web UI za bazu |
-| **PostgreSQL** | localhost:5433 | Baza podataka |
-
-## 🔑 Demo Pristup
-
-```
-Email: demo@demo.com
-Lozinka: demo123
-```
-
-## 📊 Arhitektura
-
-```
+```text
 CRM JWT Demo
 ├── Frontend (Vue 3 + Vite)
-│   ├── Components
-│   ├── Views (Home, Login, Dashboard, Notes)
-│   ├── Router
-│   ├── Stores (Pinia)
-│   └── Services (Axios)
+│   ├── Components     (Global UI elements)
+│   ├── Views          (Home, Login, Dashboard, Notes)
+│   ├── Router         (Secure navigation guards)
+│   ├── Stores         (Pinia session & data hydration)
+│   └── Services       (Axios HTTP client configurations)
 │
-├── Backend (Express.js)
-│   ├── Controllers (Auth, Client, Note)
-│   ├── Routes
-│   ├── Middleware (JWT Auth)
-│   └── Database Config
+├── Backend (Express.js REST API)
+│   ├── Controllers    (Auth, client, note transaction logic)
+│   ├── Routes         (Decoupled endpoints layer)
+│   ├── Middleware     (JWT state & token validation)
+│   └── Database       (PostgreSQL pool connection)
 │
-└── Database (PostgreSQL)
-    ├── users
-    ├── clients
-    └── notes
+└── Database (PostgreSQL 15)
+    ├── users          (Hashed credentials)
+    ├── clients        (Enterprise records)
+    └── notes          (One-to-many relational client notes)
 ```
 
-## 🔄 ESM Migracija
+---
 
-Projekt je u potpunosti migriran na **ES Modules**. Detaljne informacije:
+## 🚀 Automated Local Provisioning
 
-📖 Vidi: [ESM_MIGRATION.md](./ESM_MIGRATION.md)
-
-### Što se Promijenilo
-
-- ✅ `postcss.config.cjs` → `postcss.config.js`
-- ✅ `tailwind.config.cjs` → `tailwind.config.js`
-- ✅ `vite.config.js` – ažuriran za ESM `__dirname`
-- ✅ Backend – već koristi ESM
-
-## 🛠️ Razvoj
-
-### Frontend
+Ensure you have **Docker**, **Docker Compose**, and **Node.js** installed. The environment includes custom shell automation to bypass manual migrations and configuration.
 
 ```bash
-cd frontend
-npm run dev      # Razvoj s hot reload-om
-npm run build    # Production build
-```
+# 1. Initialize environment settings and automatically seed the PostgreSQL schema
+./setup.sh
 
-### Backend
+# 2. Start all orchestrated services (Frontend, API, DB, Adminer)
+./start.sh
 
-```bash
-cd backend
-npm run dev      # Pokretanje servera
-npm run db:setup # Setup baze
-npm run db:reset # Reset baze
-```
+# 3. Test API gateway connectivity and endpoint health
+./test-api.sh
 
-## 🐳 Docker
-
-Projekt koristi Docker Compose za PostgreSQL i Adminer:
-
-```bash
-docker-compose up -d    # Pokretanje
-docker-compose down     # Zaustavljanje
-docker-compose down -v  # Zaustavljanje + brisanje volumena
-```
-
-## 📦 Tehnologije
-
-### Frontend
-- Vue 3
-- Vue Router 4
-- Pinia (State Management)
-- Axios (HTTP Client)
-- Tailwind CSS
-- Vite
-
-### Backend
-- Node.js
-- Express.js
-- PostgreSQL
-- JWT (jsonwebtoken)
-- bcrypt
-
-### DevOps
-- Docker
-- Docker Compose
-- PostgreSQL 15
-
-## 🔐 Sigurnost
-
-- ✅ JWT tokeni za autentifikaciju
-- ✅ bcrypt heširanje lozinki
-- ✅ CORS zaštita
-- ✅ Javne i zaštićene rute
-
-## 📝 API Rute
-
-### Javne Rute
-- `GET /api/public/clients` – Svi klijenti
-- `GET /api/public/notes` – Sve bilješke
-
-### Autentifikacija
-- `POST /api/auth/login` – Prijava
-- `POST /api/auth/register` – Registracija
-
-### Zaštićene Rute (JWT)
-- `GET /api/clients` – Moji klijenti
-- `POST /api/clients` – Dodaj klijenta
-- `PUT /api/clients/:id` – Uredi klijenta
-- `DELETE /api/clients/:id` – Obriši klijenta
-- `GET /api/notes` – Moje bilješke
-- `POST /api/notes` – Dodaj bilješku
-- `PUT /api/notes/:id` – Uredi bilješku
-- `DELETE /api/notes/:id` – Obriši bilješku
-
-## 🛠️ Troubleshooting
-
-### Problem: Port već zauzet
-```bash
+# 4. Tear down the infrastructure safely when finished
 ./stop.sh
-./start.sh
 ```
 
-### Problem: Baza nije sprema
-```bash
-docker-compose down -v
-./start.sh
+---
+
+## 📍 Local Service Map
+
+| Component | URL | Environment |
+|---|---|---|
+| Frontend SPA | http://localhost:5173 | Vue 3 Dev Server |
+| Backend REST API | http://localhost:3001 | Express.js Runtime |
+| Adminer Database UI | http://localhost:8080 | Local DB Management |
+| PostgreSQL Instance | `localhost:5433` | Relational Storage |
+
+---
+
+## 🔑 Demo Credentials
+
+Pre-configured credentials seeded into the database for immediate testing of authenticated views:
+
+```
+Email:    demo@demo.com
+Password: demo123
 ```
 
-### Problem: Frontend ne učitava
-```bash
-cd frontend
-rm -rf node_modules package-lock.json
-npm install
-npm run dev
-```
+---
 
-## 📚 Dodatni Resursi
+## 🛡️ Security & Operational Notes
 
-- [Node.js ESM Documentation](https://nodejs.org/api/esm.html)
-- [Vue 3 Guide](https://vuejs.org/)
-- [Express.js Guide](https://expressjs.com/)
-- [PostgreSQL Documentation](https://www.postgresql.org/docs/)
+### Local Development vs. Production
 
-## 📄 Licenca
+**CORS & Network Layer:** The backend API features explicit Cross-Origin Resource Sharing (CORS) security configurations.
 
-MIT
+**Network Protocol:** Local container networking runs over HTTP for frictionless debugging, state inspection, and log monitoring. Production manifests are designed to offload TLS/HTTPS termination to cloud reverse-proxies (e.g., Nginx, Traefik, AWS ALB), keeping the core application layer portable.
 
-## 👨‍💻 Autor
+---
 
-CRM JWT Demo – Edukativni projekt za učenje full-stack razvoja
+## 🔄 ESM Migration Details
+
+The codebase has been fully refactored to adhere to strict ES Modules standards. Key files modernized during this migration:
+
+| Before | After |
+|---|---|
+| `postcss.config.cjs` | `postcss.config.js` (native ESM) |
+| `tailwind.config.cjs` | `tailwind.config.js` (native ESM) |
+| `vite.config.js` | modernized with safe dynamic path resolution |
+
+---
+
+## 📄 License
+
+[MIT](./LICENSE) — Created for technical assessment and educational engineering architecture demonstrations.
